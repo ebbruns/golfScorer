@@ -1,0 +1,57 @@
+package golfScorer;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class League {
+	ArrayList<Golfer> golfers;
+	BufferedReader reader;
+	
+	public void viewLeague(){
+		Collections.sort(golfers);
+		for(Golfer player : golfers){
+			System.out.println(player.name + " scored an average of " + player.average + " points, and their scores were: " + player.scores.toString());
+		}
+	}
+	
+	public void addGolfer() throws IOException{
+		System.out.println("Please enter the name of the new golfer");
+		String name = reader.readLine();
+		Golfer newGolfer = new Golfer(name);
+		golfers.add(newGolfer);
+	}
+	
+	public void addScores(Golfer addTo) throws NumberFormatException, IOException{
+		boolean done = false;
+		int score;
+		String input;
+		System.out.println("Please enter scores one at a time. Type \"done\" to finish.");
+		while(!done){
+			input = reader.readLine();
+			if(input.equals("done")){
+				done = true;
+				addTo.update();
+				break;
+			}
+			//TODO: add checks for things that will mess up valueOf()
+			score = Integer.valueOf(input);
+			addTo.scores.add(score);
+		}
+	}
+	
+	public League(){
+		golfers = new ArrayList<Golfer>();
+		reader = new BufferedReader(new InputStreamReader(System.in));
+	}
+	
+	
+	public static void main(String [] args) throws IOException{
+		System.out.println("Welcome to GolfScorer Pro");
+		System.out.println("To begin, please enter the name of the first golfer:");
+		}
+	}
+	
+}

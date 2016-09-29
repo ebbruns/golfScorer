@@ -1,0 +1,20 @@
+package golfScorer;
+
+import java.util.ArrayList;
+
+public class League {
+	ArrayList<Golfer> golfers;
+	
+	
+	public void viewStandings(){
+		
+	}
+	
+	public void addGolfer(){
+		
+	}
+	
+	public void addScores(Golfer addTo){
+		
+	}
+}
