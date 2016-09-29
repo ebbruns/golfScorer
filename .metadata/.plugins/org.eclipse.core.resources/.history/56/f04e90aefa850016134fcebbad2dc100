@@ -16,12 +16,10 @@ public class Golfer implements Comparable<Golfer>{
 		this.average = sum/this.scores.size();
 	}
 	
-	//needed to implement comparable interface to allow sorting
 	public int compareTo(Golfer otherGolfer) {
 		return this.average - otherGolfer.average;
 	}
 	
-	//Every golfer has a name, an ArrayList of scores, and an average score.
 	public Golfer(String newName){
 		name = newName;
 		scores = new ArrayList<Integer>();
