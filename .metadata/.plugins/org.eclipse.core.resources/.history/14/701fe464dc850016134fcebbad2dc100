@@ -1,0 +1,24 @@
+package golfScorer;
+
+import java.util.ArrayList;
+
+public class League {
+	ArrayList<Golfer> golfers;
+	
+	
+	public void viewLeague(){
+		for(Golfer player : this.golfers){
+			System.out.print(player.name + " scored an average of " + player.average + " points, and their scores were: " + player.scores.toString());
+		}
+		
+	}
+	
+	public void addGolfer(){
+		
+	}
+	
+	public void addScores(Golfer addTo){
+		
+	}
+	
+}

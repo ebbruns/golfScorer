@@ -1,0 +1,111 @@
+package golfScorer;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class League {
+	ArrayList<Golfer> golfers;
+	BufferedReader reader;
+	
+	public void viewLeague() throws IOException{
+		Collections.sort(golfers);
+		for(Golfer player : golfers){
+			System.out.println(player.name + " scored an average of " + player.average + " points, and their scores were: " + player.scores.toString());
+		}
+		menu();
+	}
+	
+	public void addGolfer() throws IOException{
+		System.out.println("Please enter the name of the new golfer");
+		String name = reader.readLine();
+		Golfer newGolfer = new Golfer(name);
+		golfers.add(newGolfer);
+	}
+	
+	public void addScores(Golfer addTo) throws NumberFormatException, IOException{
+		boolean done = false;
+		int score;
+		String input;
+		System.out.println("Please enter scores one at a time. Type \"done\" to finish.");
+		while(!done){
+			input = reader.readLine();
+			if(input.equals("done")){
+				done = true;
+				addTo.update();
+				break;
+			}
+			//TODO: add checks for things that will mess up valueOf()
+			score = Integer.valueOf(input);
+			addTo.scores.add(score);
+		}
+	}
+	
+	public void menu() throws IOException{
+		System.out.println("You're currently in the main menu. What would you like to do?");
+		System.out.println("Type \"golfer\" to add a golfer, type \"scores\" to add scores to a golfer, type \"view\" to see the league sorted by average score, and type \"exit\" to quit.");
+		String input = reader.readLine().toLowerCase();
+		
+		if(input.equals("golfer")){
+			golfersMenu();
+		}
+		if(input.equals("scores")){
+			scoresMenu();
+		}
+		if(input.equals("view")){
+			viewLeague();
+		}
+		if(input.equals("exit")){
+			return;
+		}
+		
+	}
+	
+	public void golfersMenu() throws IOException{
+		System.out.println("Please enter the name of the golfer you'd like to add:");
+		String input = reader.readLine().toLowerCase();
+		golfers.add(new Golfer(input));
+		System.out.println("Golfer has been added! Returning to the main menu.");
+		menu();
+	}
+	
+	public void scoresMenu() throws NumberFormatException, IOException{
+		System.out.println("Please enter the name of the golfer you'd like to add:");
+		if(golfers.isEmpty()){
+			System.out.println("Sorry, there are no golfers currently in the system, please add one to enter a score.");
+		}else{
+			int i = 0;
+			System.out.println("Please enter the number of golfer you'd like to add scores for:");
+			for(Golfer player : golfers){
+				System.out.println(player.name + " is golfer number " + i);
+				i++;
+			}
+			String input = reader.readLine();
+			Golfer chosen = golfers.get(Integer.valueOf(input));
+			System.out.println("You have chosen " + chosen.name + ". You can enter scores for them one at a time. Enter \"done\" to return to the main menu.");
+			while(true){
+				input = reader.readLine();
+				if(input.toLowerCase().equals("done")){
+					menu();
+				}else{
+					chosen.scores.add(Integer.valueOf(input));
+				}
+			}
+		}
+	}
+	
+	public League(){
+		golfers = new ArrayList<Golfer>();
+		reader = new BufferedReader(new InputStreamReader(System.in));
+	}
+	
+	
+	public static void main(String [] args) throws IOException{
+		System.out.println("Welcome to GolfScorer Pro!");
+		League myLeague = new League();
+		myLeague.menu();
+	}
+}
+

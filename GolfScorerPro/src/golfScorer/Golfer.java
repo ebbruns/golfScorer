@@ -1,76 +1,30 @@
 package golfScorer;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Golfer implements Comparable<Golfer>{
 	ArrayList<Integer> scores;
 	String name;
+	int average;
 	
-	public int compareTo(Golfer otherGolfer) {
-		int thisScores = 0, otherScores = 0; 
-		//get sums
-		for(int score : this.scores){
-			thisScores+=score;
+	//updates golfer average to reflect scores
+	public void update(){
+		int sum = 0;
+		for(int number : this.scores){
+			sum += number;
 		}
-		for(int score : otherGolfer.scores){
-			otherScores+=score;
-		}
-		//get means from sums
-		thisScores = thisScores/this.scores.size();
-		otherScores = otherScores/otherGolfer.scores.size();
-		
-		return thisScores - otherScores;
+		this.average = sum/this.scores.size();
 	}
 	
+	//needed to implement comparable interface to allow sorting
+	public int compareTo(Golfer otherGolfer) {
+		return this.average - otherGolfer.average;
+	}
+	
+	//Every golfer has a name, an ArrayList of scores, and an average score.
 	public Golfer(String newName){
 		name = newName;
 		scores = new ArrayList<Integer>();
-	}
-
-	
-	public static void main(String [] args) throws IOException{
-		boolean done = false;
-		ArrayList<Golfer> golfers = new ArrayList<Golfer>();
-		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("Welcome to GolfScorer Pro");
-		System.out.println("To begin, please enter the name of the first golfer:");
-		while(!done){
-			Golfer current;
-			current = new Golfer(reader.readLine());
-			golfers.add(current);
-			System.out.println("Now please enter the golfer's scores, one at a time.");
-			System.out.println("To move on to the next golfer, enter \"next\"");
-			System.out.println("To finish and see the winners enter \"done\"");
-			while(true){
-				String input = reader.readLine();
-				if(input.toLowerCase().equals("done")){
-					done = true;
-					break;
-				}
-				if(input.toLowerCase().equals("next")){
-					System.out.println("Please enter the name of the next golfer:");
-					break;
-				}
-				if(!input.equals("")){
-					current.scores.add(Integer.valueOf(input));
-					}
-			}
-		}
-		
-		//when they are all done:
-		Collections.sort(golfers);
-		
-		for(Golfer player : golfers){
-			int sum = 0;
-			for(int score : player.scores){
-				sum+=score;
-			}
-			sum = sum / player.scores.size();
-			System.out.println(player.name +" scored " + sum + "on average");
-		}
+		average = 0;
 	}
 }
