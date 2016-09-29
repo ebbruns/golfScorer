@@ -83,7 +83,7 @@ public class League {
 			if(input.toLowerCase().equals("done")){
 				menu();
 			}else{
-				chosen.scores.remove(chosen.scores.get(Integer.valueOf(input)));
+				chosen.scores.remove(Integer.valueOf(input));
 			}
 		}
 	}

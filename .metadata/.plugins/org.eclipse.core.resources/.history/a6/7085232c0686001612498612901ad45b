@@ -39,7 +39,6 @@ public class League {
 		}
 	}
 	
-	// Allows deletions of golfers
 	public void deleteGolfer( ) throws IOException{
 		System.out.println("Please enter the number of the golfer you'd like to delete, or enter \"done\" to return to the main menu.");
 		while(true){
@@ -52,7 +51,7 @@ public class League {
 			if(input.equals("done")){
 				menu();
 			}else{
-				golfers.remove(golfers.get(Integer.valueOf(input)));
+				golfers.remove(Integer.valueOf(input));
 			}
 		}
 	}
@@ -83,7 +82,7 @@ public class League {
 			if(input.toLowerCase().equals("done")){
 				menu();
 			}else{
-				chosen.scores.remove(chosen.scores.get(Integer.valueOf(input)));
+				chosen.scores.remove(Integer.valueOf(input));
 			}
 		}
 	}
