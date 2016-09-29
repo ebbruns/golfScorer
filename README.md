@@ -6,7 +6,7 @@ Currently, this functionality exists.
 
 Things which will be developed in the future include:
 
-x Ability to view all scores (added 9/28)
+- <del>Ability to view all scores </del>(added 9/28)
 - Ability to write scores to file/read scores from file
 - GUI (I don't think my mom likes Eclipse)
 - Ability to dictate a minimum number of games for a golfer to have played to be considered in the final rankings
