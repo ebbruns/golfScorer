@@ -38,7 +38,7 @@ public class League {
 			String input = reader.readLine();
 			if(input.toLowerCase().equals("done")){
 				menu();
-			}else if (input.equals("")){
+			}else if (input == ""){
 				System.out.println("Please enter a name rather than a blank line");
 				addGolfer();
 			}
@@ -49,7 +49,7 @@ public class League {
 	// Allows deletions of golfers
 	public void deleteGolfer( ) throws IOException{
 		System.out.println("Please enter the number of the golfer you'd like to delete, or enter \"done\" to return to the main menu.");
-		while(golfers.size()>0){
+		while(true){
 			int i = 0;
 			for(Golfer player : golfers){
 				System.out.println(player.name + " is golfer number " + i);
@@ -58,15 +58,10 @@ public class League {
 			String input = reader.readLine();
 			if(input.equals("done")){
 				menu();
-			}else if (Integer.valueOf(input) >= golfers.size() || Integer.valueOf(input) < 0){
-				System.out.println("Please select a number corresponding to a golfer on the list");
-			}
-			else{
+			}else{
 				golfers.remove(golfers.get(Integer.valueOf(input)));
 			}
 		}
-		System.out.println("All golfers have been deleted, returning to main menu.");
-		menu();
 	}
 	
 	//For adding scores to a given golfer in the league
@@ -124,16 +119,13 @@ public class League {
 	//The menu that can be used to add new golfers
 	public void golfersMenu() throws IOException{
 		while(true){
-			System.out.println("Type \"add\" to add a new golfer, \"delete\" to remove an existing golfer, or \"done\" to return to the main menu.");
+			System.out.println("Type \"add\" to add a new golfer, or \"delete\" to remove an existing golfer");
 			String input = reader.readLine().toLowerCase();
 			if(input.equals("add")){
 				addGolfer();
 			}else if(input.equals("delete")){
 				deleteGolfer();
-			}else if(input.equals("done")){
-				menu();
-			}
-			else{
+			}else{
 				System.out.println("Command not recognized, please try again!");
 			}
 		}

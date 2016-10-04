@@ -124,16 +124,13 @@ public class League {
 	//The menu that can be used to add new golfers
 	public void golfersMenu() throws IOException{
 		while(true){
-			System.out.println("Type \"add\" to add a new golfer, \"delete\" to remove an existing golfer, or \"done\" to return to the main menu.");
+			System.out.println("Type \"add\" to add a new golfer, or \"delete\" to remove an existing golfer");
 			String input = reader.readLine().toLowerCase();
 			if(input.equals("add")){
 				addGolfer();
 			}else if(input.equals("delete")){
 				deleteGolfer();
-			}else if(input.equals("done")){
-				menu();
-			}
-			else{
+			}else{
 				System.out.println("Command not recognized, please try again!");
 			}
 		}

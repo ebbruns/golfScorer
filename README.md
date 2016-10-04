@@ -6,11 +6,11 @@ Currently, this functionality exists.
 
 Things which will be developed in the future include:
 
-- <del>Ability to view all scores </del>(added 9/28)
+- <del>Ability to view all scores </del> (added 9/28/16)
 - Ability to write scores to file/read scores from file
 - GUI (I don't think my mom likes Eclipse)
 - Ability to dictate a minimum number of games for a golfer to have played to be considered in the final rankings
 - Cleaning of inputs, use of try/catch to avoid crashes.
-- Ability to delete golfers and scores
-- Ability to modify golfers and scores
+- <del>Ability to delete golfers and scores</del> (added 9/29/16)
+- <del>Ability to modify golfers and scores</del> (delayed for now since users can delete a score and add again)
 
