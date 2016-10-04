@@ -3,6 +3,10 @@ package golfScorer;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -103,7 +107,7 @@ public class League {
 	//The main menu of the application
 	public void menu() throws IOException{
 		System.out.println("You're currently in the main menu. What would you like to do?");
-		System.out.println("Type \"golfer\" to add a golfer, type \"scores\" to add scores to a golfer, type \"view\" to see the league sorted by average score, and type \"exit\" to quit.");
+		System.out.println("Type \"golfer\" to add a golfer, type \"scores\" to add scores to a golfer, type \"view\" to see the league sorted by average score, type \"save\" to save a league, \"load\" to load a league, and type \"exit\" to quit.");
 		String input = reader.readLine().toLowerCase();
 		
 		if(input.equals("golfer")){
@@ -114,6 +118,12 @@ public class League {
 		}
 		if(input.equals("view")){
 			viewLeague();
+		}
+		if(input.equals("save")){
+			this.save();
+		}
+		if(input.equals("load")){
+			this.load();
 		}
 		if(input.equals("exit")){
 			return;
@@ -165,6 +175,27 @@ public class League {
 				}
 			}
 		}
+	}
+	
+	public void save() throws IOException{
+		System.out.println("Please enter the name of the league");
+		String leagueName = reader.readLine();
+		ArrayList<String> lines = new ArrayList<String>();
+		for(Golfer player : golfers){
+			String scorelist = "";
+			for(int score : player.scores){
+				scorelist = scorelist + score + ",";
+			}
+			scorelist = scorelist.substring(0, scorelist.length()-1);
+			lines.add(player.name + "," + scorelist);
+		}
+		Path file = Paths.get(leagueName + ".txt");
+		Files.write(file, lines, Charset.forName("UTF-8"));	
+		menu();
+	}
+	
+	public void load(){
+		
 	}
 	
 	//A league is a set of golfers who will be compared. The league also includes a reader for stdin.
