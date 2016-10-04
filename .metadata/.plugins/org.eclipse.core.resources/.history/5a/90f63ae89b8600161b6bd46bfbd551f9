@@ -6,21 +6,14 @@ public class Golfer implements Comparable<Golfer>{
 	ArrayList<Integer> scores;
 	String name;
 	int average;
-	int total;
 	
 	//updates golfer average to reflect scores
 	public void update(){
-		if(this.scores.size() == 0){
-			this.average = 0;
-			return;
-		}
 		int sum = 0;
 		for(int number : this.scores){
 			sum += number;
 		}
-		this.total = sum;
 		this.average = sum/this.scores.size();
-		return;
 	}
 	
 	//needed to implement comparable interface to allow sorting

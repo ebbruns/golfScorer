@@ -6,7 +6,6 @@ public class Golfer implements Comparable<Golfer>{
 	ArrayList<Integer> scores;
 	String name;
 	int average;
-	int total;
 	
 	//updates golfer average to reflect scores
 	public void update(){
@@ -18,7 +17,6 @@ public class Golfer implements Comparable<Golfer>{
 		for(int number : this.scores){
 			sum += number;
 		}
-		this.total = sum;
 		this.average = sum/this.scores.size();
 		return;
 	}
