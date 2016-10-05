@@ -1,6 +1,7 @@
 package golfScorer;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
@@ -177,6 +178,8 @@ public class League {
 		}
 	}
 	
+	//saves the league as a .txt file formatted as a .csv
+	//each line has a golfer's name followed by scores, name and scores separated by commas.
 	public void save() throws IOException{
 		System.out.println("Please enter the name of the league");
 		String leagueName = reader.readLine();
@@ -186,7 +189,8 @@ public class League {
 			for(int score : player.scores){
 				scorelist = scorelist + score + ",";
 			}
-			scorelist = scorelist.substring(0, scorelist.length()-1);
+			String toAdd = player.name + "," + scorelist;
+			toAdd = toAdd.substring(0, toAdd.length()-1);
 			lines.add(player.name + "," + scorelist);
 		}
 		Path file = Paths.get(leagueName + ".txt");
@@ -194,8 +198,23 @@ public class League {
 		menu();
 	}
 	
-	public void load(){
-		
+	public void load() throws IOException{
+		System.out.println("Please enter the name of the league");
+		String leagueName = reader.readLine();
+		leagueName += ".txt";
+		League loadLeague = new League();
+		BufferedReader leagueReader = new BufferedReader(new FileReader(leagueName));
+		String line = "";
+		while ((line = leagueReader.readLine()) != null){
+			String[] tokens = line.split(",");
+			Golfer newGolfer = new Golfer(tokens[0]);
+			for(int i = 1; i < tokens.length; i++){
+				newGolfer.scores.add(Integer.valueOf(tokens[i]));
+			}
+			loadLeague.golfers.add(newGolfer);
+		}
+		leagueReader.close();
+		loadLeague.menu();
 	}
 	
 	//A league is a set of golfers who will be compared. The league also includes a reader for stdin.
