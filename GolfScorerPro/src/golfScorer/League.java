@@ -178,7 +178,7 @@ public class League {
 		}
 	}
 	
-	//saves the league as a .txt file formatted as a .csv
+	//saves the league as a .csv
 	//each line has a golfer's name followed by scores, name and scores separated by commas.
 	public void save() throws IOException{
 		System.out.println("Please enter the name of the league");
@@ -193,7 +193,7 @@ public class League {
 			toAdd = toAdd.substring(0, toAdd.length()-1);
 			lines.add(player.name + "," + scorelist);
 		}
-		Path file = Paths.get(leagueName + ".txt");
+		Path file = Paths.get(leagueName + ".csv");
 		Files.write(file, lines, Charset.forName("UTF-8"));	
 		menu();
 	}
@@ -201,7 +201,7 @@ public class League {
 	public void load() throws IOException{
 		System.out.println("Please enter the name of the league");
 		String leagueName = reader.readLine();
-		leagueName += ".txt";
+		leagueName += ".csv";
 		League loadLeague = new League();
 		BufferedReader leagueReader = new BufferedReader(new FileReader(leagueName));
 		String line = "";
