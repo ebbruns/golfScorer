@@ -1,0 +1,67 @@
+INTRODUCTION
+------------
+Greetings! Thanks for using GolfScorer Pro for all your golf scoring needs!
+
+This guide exists to explain what you can do with GolfScorer, and how it can interact with other programs you might want to use.
+
+BASICS
+------
+Most of this is explained while using the program, but this is a little more in depth.
+Text in parenthesis and quotes ("like this") indicates a command that can be given on the screen being discussed.
+
+When GolfScorer starts up, it goes to the main menu.
+Here, we can add or delete golfers ("golfer"), add or delete scores ("scores"), view the league in order of average score ("view"), save the league for later use ("save"), load a previously saved league ("load"), or exit the program ("exit").
+We will now discuss each sub-menu.
+
+GOLFERS
+-------
+This menu is for adding or deleting golfers.
+To add golfers, we use ("add"), to delete golfers we use ("delete"), to return to the main menu, we use ("done").
+
+In the add menu, we simply type the names of golfers one per line. Each time we press enter, it adds a new golfer to the system with that name.
+In this menu, ("done") returns us to the main menu. This means we cannot have a golfer named "done", and a golfer with a blank name will not work. Otherwise, all names are valid.
+
+In the delete menu, a list of all the golfers in the system is displayed, and each name has a number next to it.
+To delete a golfer, simply type in the number corresponding to the golfer you want to delete, and press enter. Typing ("done") or having no remaining golfers in the league returns you to the main menu.
+
+SCORES
+------
+This menu is for adding or deleting scores. Scores must be added to a previously created golfer. If no golfers exist, scores cannot be added.
+If there are golfers, their names will be listed and each will correspond to a number. Enter the number to add or delete scores from that golfer.
+
+Once we have selected a golfer, we have the option to add or to delete scores.
+If we add scores, we can enter a number to add that to the list of scores, or enter ("done") to return to the main menu.
+If we delete scores, we see a list of the golfer's scores, each of which corresponds to a number. We can enter the number corresponding to the score to delete it.
+If the golfer has no scores and we try to delete a score, the program returns to the main menu.
+
+VIEW
+----
+This option prints out all the golfers in the league, as well as each golfer's scores, their average score, and the sum of their scores.
+The golfers are ordered by their average score (total score divided by number of games). This way, we order them by who has the lowest score, without benefitting those who miss weeks of play.
+
+SAVE
+----
+This option allows the current league (the golfers and scores) to be saved for later access. The user is prompted to name the save file. If they give <name>, the file will be saved as <name>.csv in the folder the program is run from.
+If there is already a file called <name>.csv, that file will be overwritten.
+
+LOAD
+----
+This option allows a league to be loaded from a file. The user is prompted to name the file they would like to load. Given <name>, it loads <name>.csv from the folder in which the program is run from.
+Once a league is loaded, it works just like a league that was manually entered, and can be viewed, edited and even saved again.
+
+EXCEL COMPATABILITY
+-------------------
+An exciting feature of this program is compatability with Microsoft Excel with saved/loaded files. The .csv files created by this program can be loaded into Microsoft Excel, and properly formatted Excel files can be loaded into the program.
+To create an Excel file which can be loaded into GolfScorer, the file must be formatted as follows:
+
+1) The leftmost column of the Excel file must contain the names of the golfers
+2) On a row with a name, the columns to the right of the name can contain scores
+2a) If a row doesn't have a golfer name, it cannot have scores
+2b) A row can have a golfer name without scores
+3) Columns CANNOT have headers.
+
+----------
+Thanks so much for using GolfScorer Pro.
+Feel free to contact Evan.Bruns[at]Gmail.com with any questions, feedback or comments about the application.
+Licensed under the GNU Public License (GPL) v3.0. You are free to share and modify this program, but must allow others to do the same with your version.
+

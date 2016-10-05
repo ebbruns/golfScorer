@@ -90,6 +90,10 @@ public class League {
 	//For deleting scores from a given golfer in the league
 	public void deleteScores(Golfer chosen) throws IOException{
 		while(true){
+			if(chosen.scores.isEmpty()){
+				System.out.println("This golfer has no scores to delete, returning to main menu.");
+				menu();
+			}
 			int i = 0;
 			for(int score : chosen.scores){
 				System.out.println("Score number " + i + " is " + score);
