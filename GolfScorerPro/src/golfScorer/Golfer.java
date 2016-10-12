@@ -3,10 +3,10 @@ package golfScorer;
 import java.util.ArrayList;
 
 public class Golfer implements Comparable<Golfer>{
-	ArrayList<Integer> scores;
+	ArrayList<Double> scores;
 	String name;
-	int average;
-	int total;
+	double average;
+	double total;
 	
 	//updates golfer average to reflect scores
 	public void update(){
@@ -14,8 +14,8 @@ public class Golfer implements Comparable<Golfer>{
 			this.average = 0;
 			return;
 		}
-		int sum = 0;
-		for(int number : this.scores){
+		double sum = 0;
+		for(double number : this.scores){
 			sum += number;
 		}
 		this.total = sum;
@@ -25,13 +25,13 @@ public class Golfer implements Comparable<Golfer>{
 	
 	//needed to implement comparable interface to allow sorting
 	public int compareTo(Golfer otherGolfer) {
-		return this.average - otherGolfer.average;
+		return (int)(this.average - otherGolfer.average);
 	}
 	
 	//Every golfer has a name, an ArrayList of scores, and an average score.
 	public Golfer(String newName){
 		name = newName;
-		scores = new ArrayList<Integer>();
+		scores = new ArrayList<Double>();
 		average = 0;
 	}
 }
