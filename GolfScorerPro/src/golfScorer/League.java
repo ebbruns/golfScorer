@@ -74,6 +74,32 @@ public class League {
 		menu();
 	}
 	
+	public void editGolfer() throws IOException{
+		System.out.println("Please enter the number of the golfer you'd like to edit, or enter \"done\" to return to the main menu.");
+		while(golfers.size()>0){
+			int i = 0;
+			if(golfers.isEmpty()){
+				System.out.println("Sorry, but there are no golfers to edit!");
+				menu();
+			}
+			for(Golfer player : golfers){
+				System.out.println(player.name + " is golfer number " + i);
+				i++;
+			}
+			String input = reader.readLine();
+			if(input.equals("done")){
+				menu();
+			}else if (Integer.valueOf(input) >= golfers.size() || Integer.valueOf(input) < 0){
+				System.out.println("Please select a number corresponding to a golfer on the list");
+			}
+			else{
+				System.out.println("Please enter the new name you would like for " + golfers.get(Integer.valueOf(input)).name);
+				String newName = reader.readLine();
+				golfers.get(Integer.valueOf(input)).name = newName;	
+			}
+		}
+	}
+	
 	//For adding scores to a given golfer in the league
 	public void addScores(Golfer addTo) throws NumberFormatException, IOException{
 		System.out.println("You can enter scores one at a time. Enter \"done\" to return to the main menu.");
@@ -82,7 +108,11 @@ public class League {
 			if(input.toLowerCase().equals("done")){
 				menu();
 			}else{
-				addTo.scores.add(Integer.valueOf(input));
+				try{
+					addTo.scores.add(Integer.valueOf(input));
+				}catch(NumberFormatException exception){
+					System.out.println("Sorry, your input must be an integer!");
+				}
 			}
 		}
 	}

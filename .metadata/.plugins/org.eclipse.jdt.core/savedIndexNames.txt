@@ -8,7 +8,6 @@ INDEX VERSION 1.129+C:\Users\Jan\Documents\GitHub\golfScorer\.metadata\.plugins\
 3407430047.index
 985286902.index
 2809250744.index
-3535381567.index
 2855899100.index
 2637943071.index
 2133282975.index
